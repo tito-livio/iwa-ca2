@@ -1,0 +1,42 @@
+{
+    "dependencies": {
+        "axios": "^0.26.1",
+        "dotenv": "^16.0.0",
+        "ejs": "^3.0.2",
+        "express": "^4.17.3",
+        "mongoose": "^6.2.10",
+        "morgan": "^1.10.0",
+        "nodemon": "^2.0.15",
+        "path": "^0.12.7"
+    },
+    "scripts": {
+        "start": "node server.js"
+    },
+    "name": "iwa-ca2",
+    "description": "RESTful API - Node.JS/MongoDB",
+    "version": "1.0.0",
+    "main": "server.js",
+    "type": "module",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/tito-livio/iwa-ca2.git"
+    },
+    "keywords": [
+        "RESTfull",
+        "API",
+        "-",
+        "CRUD",
+        "-",
+        "Node.Js",
+        "Express",
+        "MongoDB",
+        "Morgan",
+        "EJS"
+    ],
+    "author": "Tito Livio",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/tito-livio/iwa-ca2/issues"
+    },
+    "homepage": "https://github.com/tito-livio/iwa-ca2#readme"
+}
