@@ -2,13 +2,19 @@ console.time('Execution time:');
 import express from 'express';
 import dotenv from 'dotenv';
 import route from './server/routes/router.js';
+
+//import a logger services
 import morgan from 'morgan';
+
+//import 
 import path from "path";
 import bodyparser from 'body-parser';
 import connectDB from './server/database/connection.js';
 
+//Calling the instance of express
 const app = express();
 
+//Calling the JSON support to the API
 app.use(express.json());
 
 //set a global variable filename to env engine
@@ -17,7 +23,7 @@ dotenv.config({ path: 'config.env' });
 //log requests
 app.use(morgan('tiny'));
 
-//parser
+//set the ability to work with the body of the requests
 app.use(bodyparser.urlencoded({ extends: true }));
 
 //set views engine
