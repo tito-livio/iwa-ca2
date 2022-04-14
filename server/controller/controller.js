@@ -1,6 +1,12 @@
+/**
+ * @author: Tito Livio - 2018253
+ * @description: This file is responsible for API request functions.
+ */
+
+//importing the database from models 
 import Cardb from '../model/model.js';
 
-//Create & save new Car 
+//Create a new Car function
 export const createCar_API = (req, res) => {
     //Validate request
     if (!req.body) {
@@ -9,7 +15,7 @@ export const createCar_API = (req, res) => {
         });
         return;
     }
-    //Create new Car
+    //Save the request body into a variable
     const car = new Cardb({
         name: req.body.name,
         type: req.body.type,
@@ -17,7 +23,7 @@ export const createCar_API = (req, res) => {
         price: req.body.price,
         ecoType: req.body.ecoType
     });
-    //save car into database
+    //save car into database and return to the client
     car
         .save(car)
         .then(data => {
@@ -30,15 +36,19 @@ export const createCar_API = (req, res) => {
         })
 }
 
+//Find car by id function
 export const findCar_API = (req, res) => {
+    //Validate request if it is not empty
     if (req.query.id) {
         const id = req.query.id;
+        //finding the car by id in the MongoDB database
         Cardb.findById(id).then((data) => {
             if (!data) {
                 res.status(404).send({
                     message: "Car not found with id: " + id
                 });
             } else {
+                //return data to the client
                 res.send(data);
             }
         }).catch((err) => {
