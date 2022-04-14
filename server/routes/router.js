@@ -1,5 +1,6 @@
 /**
  * @author: Tito Livio - 2018253
+ * @description: This file is responsible for distribution of the all the routes
  */
 
 import express from 'express'; //import express

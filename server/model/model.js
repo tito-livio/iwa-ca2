@@ -1,3 +1,9 @@
+/**
+ * @author Tito Livio - 2018253
+ * @description This file is responsible to create the MongoDB schema for the car collection
+ * */
+
+//importing a mongoose module
 import mongoose from "mongoose";
 
 var schema = mongoose.Schema({
@@ -24,6 +30,9 @@ var schema = mongoose.Schema({
         required: true
     }
 })
+
+//Variable to export the schema
 const CarDB = mongoose.model('cardb', schema);
 
+//Making the schema available globally
 export default CarDB;
