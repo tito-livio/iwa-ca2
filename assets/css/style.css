@@ -107,3 +107,7 @@ th,
     justify-content: center;
     align-items: stretch;
 }
+.carTableRow:hover{
+background-color: #3aafa9 !important;
+color: #f7f7f7 !important;
+}

@@ -1,15 +1,15 @@
-console.time('Execution time:');
-import express from 'express';
-import dotenv from 'dotenv';
-import route from './server/routes/router.js';
+console.time("Execution time:");
+import express from "express";
+import dotenv from "dotenv";
+import route from "./server/routes/router.js";
 
 //import a logger services
-import morgan from 'morgan';
+import morgan from "morgan";
 
-//import 
+//import
 import path from "path";
-import bodyparser from 'body-parser';
-import connectDB from './server/database/connection.js';
+import bodyparser from "body-parser";
+import connectDB from "./server/database/connection.js";
 
 //Calling the instance of express
 const app = express();
@@ -18,32 +18,32 @@ const app = express();
 app.use(express.json());
 
 //set a global variable filename to env engine
-dotenv.config({ path: 'config.env' });
+dotenv.config({ path: "config.env" });
 
 //log requests
-app.use(morgan('tiny'));
+app.use(morgan("tiny"));
 
 //set the ability to work with the body of the requests
-app.use(bodyparser.urlencoded({ extends: true }));
+app.use(bodyparser.urlencoded({ extended: true }));
 
 //set views engine
 app.set("view engine", "ejs");
 
-app.use('/', route);
+app.use("/", route);
 
 //setting a short links to load assets inside the application
 app.use("/css", express.static(path.resolve("assets/css")));
-app.use('/img', express.static(path.resolve("assets/img")));
-app.use('/js', express.static(path.resolve("assets/js")));
+app.use("/img", express.static(path.resolve("assets/img")));
+app.use("/js", express.static(path.resolve("assets/js")));
 
 //Calling instance of MongoDB Connection by Mongoose
 connectDB();
 
 //call port from /config.env or call port 3030 if it is not reachable
 const PORT = process.env.PORT || 4040;
-const SERVER = process.env.SERVER || 'localhost:';
+const SERVER = process.env.SERVER || "localhost:";
 
 app.listen(PORT, () => {
-    console.log(`Server is running on ${SERVER}${PORT}`)
+  console.log(`Server is running on ${SERVER}${PORT}`);
 });
-console.timeEnd('Execution time:');
+console.timeEnd("Execution time:");

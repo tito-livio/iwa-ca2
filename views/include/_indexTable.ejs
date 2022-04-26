@@ -1,22 +1,17 @@
 <% car.forEach((car)=>{%>
-    <tr>
-        <td>
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="<%=car._id%>" />
-        </td>
-        <td>
-            <%= car.name%>
-        </td>
-        <td>
-            <%= car.type%>
-        </td>
-        <td>
-            <%= car.fuel%>
-        </td>
-        <td>
-            <%= car.price%>
-        </td>
-        <td>
-            <%= car.ecoType%>
-        </td>
-    </tr>
-    <% }) %>
+<tr class="carTableRow">
+  <td>
+    <input
+      class="form-check-input"
+      type="checkbox"
+      id="inlineCheckbox1"
+      value="<%=car._id%>"
+    />
+  </td>
+  <td><%= car.name%></td>
+  <td><%= car.type%></td>
+  <td><%= car.fuel%></td>
+  <td><%= car.price%></td>
+  <td><%= car.ecoType%></td>
+</tr>
+<% }) %>
