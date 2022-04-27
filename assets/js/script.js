@@ -52,6 +52,7 @@ function selectRow(e, n) {
   //otherwise add it
   let carRow = $(`#carTableRow${n}`);
   let checked = e.target.checked;
+  let isEco = carRow.attr("data-eco");
   //Here first we are getting the selected cars element's text
   //and convert it into number for manipulation
   let selectedCarsNo = parseInt($("#selectedCars").text());
@@ -67,11 +68,20 @@ function selectRow(e, n) {
     selectedCarsNo++;
     $(selectedCars).text(selectedCarsNo);
     carRow.addClass("selected");
-    //Adding selected car into array
-    selectedCarsArray.push({
-      name: $(`#car${n}name`).text(),
-      price: parseInt($(`#car${n}price`).attr("data-price")),
-    });
+    //Adding selected car into array (with calculating VAT if car is eco then VAT will be 10% of price otherwise 23%)
+    if (isEco == "Yes") {
+      selectedCarsArray.push({
+        name: $(`#car${n}name`).text(),
+        price: parseInt($(`#car${n}price`).attr("data-price")),
+        vat: parseInt($(`#car${n}price`).attr("data-price")) * 0.1,
+      });
+    } else {
+      selectedCarsArray.push({
+        name: $(`#car${n}name`).text(),
+        price: parseInt($(`#car${n}price`).attr("data-price")),
+        vat: parseInt($(`#car${n}price`).attr("data-price")) * 0.23,
+      });
+    }
   }
   selectedCarsArray.forEach(function (selectedCar) {
     console.log(selectedCar);
@@ -96,9 +106,16 @@ function highlightEco(e) {
 }
 function calculateBill() {
   let totalBill = 0;
+  let totalVat = 0;
+  let totalCars = 0;
   selectedCarsArray.forEach(function (selectedCar) {
     console.log(selectedCar);
+    totalCars++;
     totalBill += selectedCar.price;
+    totalVat += selectedCar.vat;
   });
-  console.log(totalBill);
+  $("#total-cars").text(totalCars);
+  $("#cost-price").text(formatter.format(totalBill));
+  $("#vat").text(formatter.format(totalVat));
+  $("#amount-payable").text(formatter.format(totalBill + totalVat));
 }
