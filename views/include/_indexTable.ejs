@@ -9,10 +9,13 @@
       onchange="selectRow(event,'<%=i%>')"
     />
   </td>
-  <td><%= car.name%></td>
+  <td id="car<%=i%>name"><%= car.name%></td>
   <td><%= car.type%></td>
   <td><%= car.fuel%></td>
-  <td><%= car.price%></td>
+  <td id="car<%=i%>price" data-price="<%= car.price %>">
+    <%= Intl.NumberFormat('en-US', { style: 'currency', currency: 'EUR',
+    }).format(car.price); %>
+  </td>
   <td><%= car.ecoType%></td>
 </tr>
 <% }) %>

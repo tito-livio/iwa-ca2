@@ -36,10 +36,10 @@
                             <p class="h5">Total Amount</p>
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text">&#128;</span>
+                                    <span class="input-group-text">&#8227;</span>
                                 </div>
-                                <input type="text" class="form-control" aria-label="Total" name="txtBillAmt" id="totalAmount" />
-                                <input class="btn btn-block btn-secondary mt-2" type="button" name="btnCalcBill" value="Calculate Bill" id="calcBill" data-toggle="modal" data-target="#exampleModal" />
+                                <input type="text" class="form-control" aria-label="Total" name="txtBillAmt" id="totalAmount" disabled style="background-color: #d3d3d3b7;"/>
+                                <input class="btn btn-block btn-secondary mt-2" type="button" name="btnCalcBill" value="Calculate Bill" id="calcBill" data-toggle="modal" data-target="#exampleModal" onclick="calculateBill()"/>
                                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog bg-light" role="document">
                                         <div class="modal-dialog" role="document">
@@ -53,7 +53,7 @@
                                                 </p>
                                                 <p>
                                                     <strong>Cost Price: </strong>
-                                                    <span id="cost-price">0</span>&#128;
+                                                    <span id="cost-price">0</span>
                                                 </p>
                                                 <p>
                                                     <strong>VAT: </strong>
@@ -61,7 +61,7 @@
                                                 </p>
                                                 <p>
                                                     <strong>Amount Payable: </strong>
-                                                    <span id="amount-payable">0</span>&#128;
+                                                    <span id="amount-payable">0</span>
                                                 </p>
                                             </div>
                                             <div class="modal-footer">

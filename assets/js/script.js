@@ -1,3 +1,9 @@
+let selectedCarsArray = [];
+var formatter = new Intl.NumberFormat("en-US", {
+  style: "currency",
+  currency: "EUR",
+});
+
 $("#add_car").submit(function () {
   alert("Data inserted successfully");
 });
@@ -41,14 +47,19 @@ if (window.location.pathname == "/edit-car") {
 //and highlights it by adding a class and selectes it
 
 function selectRow(e, n) {
+  let totalBill = 0;
   //If the row is selected then remove the selected class
   //otherwise add it
   let carRow = $(`#carTableRow${n}`);
   let checked = e.target.checked;
   //Here first we are getting the selected cars element's text
   //and convert it into number for manipulation
-  let selectedCarsNo = parseInt($(selectedCars).text());
+  let selectedCarsNo = parseInt($("#selectedCars").text());
   if (checked == false) {
+    let filteredArray = selectedCarsArray.filter(function (car) {
+      return car.name != $(`#car${n}name`).text();
+    });
+    selectedCarsArray = filteredArray;
     carRow.removeClass("selected");
     selectedCarsNo--;
     $(selectedCars).text(selectedCarsNo);
@@ -56,7 +67,18 @@ function selectRow(e, n) {
     selectedCarsNo++;
     $(selectedCars).text(selectedCarsNo);
     carRow.addClass("selected");
+    //Adding selected car into array
+    selectedCarsArray.push({
+      name: $(`#car${n}name`).text(),
+      price: parseInt($(`#car${n}price`).attr("data-price")),
+    });
   }
+  selectedCarsArray.forEach(function (selectedCar) {
+    console.log(selectedCar);
+    totalBill += selectedCar.price;
+  });
+  $("#totalAmount").val(formatter.format(totalBill));
+  console.log(selectedCarsArray);
 }
 //Function to highlight cars if they are eco-friendly
 function highlightEco(e) {
@@ -71,4 +93,12 @@ function highlightEco(e) {
       }
     }
   }
+}
+function calculateBill() {
+  let totalBill = 0;
+  selectedCarsArray.forEach(function (selectedCar) {
+    console.log(selectedCar);
+    totalBill += selectedCar.price;
+  });
+  console.log(totalBill);
 }
