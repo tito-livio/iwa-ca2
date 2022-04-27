@@ -1,5 +1,5 @@
 <% car.forEach((car,i)=>{%>
-<tr id="carTableRow<%=i%>" class="carTableRow">
+<tr id="carTableRow<%=i%>" class="carTableRow" data-eco="<%= car.ecoType%>">
   <td>
     <input
       class="form-check-input"

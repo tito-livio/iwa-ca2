@@ -43,10 +43,32 @@ if (window.location.pathname == "/edit-car") {
 function selectRow(e, n) {
   //If the row is selected then remove the selected class
   //otherwise add it
+  let carRow = $(`#carTableRow${n}`);
   let checked = e.target.checked;
+  //Here first we are getting the selected cars element's text
+  //and convert it into number for manipulation
+  let selectedCarsNo = parseInt($(selectedCars).text());
   if (checked == false) {
-    $(`#carTableRow${n}`).removeClass("selected");
+    carRow.removeClass("selected");
+    selectedCarsNo--;
+    $(selectedCars).text(selectedCarsNo);
   } else {
-    $(`#carTableRow${n}`).addClass("selected");
+    selectedCarsNo++;
+    $(selectedCars).text(selectedCarsNo);
+    carRow.addClass("selected");
+  }
+}
+//Function to highlight cars if they are eco-friendly
+function highlightEco(e) {
+  let carTableRows = $(".carTableRow");
+  for (let i = 0; i < carTableRows.length; i++) {
+    let isEco = carTableRows[i].getAttribute("data-eco");
+    if (isEco == "Yes") {
+      if (e.target.checked == false) {
+        carTableRows[i].classList.remove("eco-highlight");
+      } else {
+        carTableRows[i].classList.add("eco-highlight");
+      }
+    }
   }
 }
