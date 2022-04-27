@@ -36,7 +36,12 @@ body {
 
 
 /*Standard Table Styles that will be used overall*/
-
+.table th{
+    text-align: center;
+}
+.table td{
+    text-align: center;
+}
 table,
 th,
 td {

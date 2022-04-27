@@ -3,14 +3,30 @@
 <!--/include header-->
 <%-include('include/_navbar')%>
 <!--Main Site-->
-<main id="site-main">
+<main id="site-main" style="margin: 25px">
   <div class="form-title text-center">
     <h2 class="text-dark">Edit / Delete Car</h2>
-    <span class="text-dark">Use the below actions to edit or delete a car</span>
+    <span class="text-dark">Use the below form to edit or delete a car</span>
   </div>
   <div class="flex-container2">
+    <div class="box-nav d-flex justify-between mb-1">
+      <a
+        href="/add-car"
+        class="border-shadow p-2"
+        style="
+          border-radius: 30px;
+          background-color: #3aafa9;
+          text-decoration: none;
+          margin-left: 12px;
+        "
+      >
+        <span class="text-gradient p-1 text-light"
+          >Add a New Car <i class="fa fa-car"></i
+        ></span>
+      </a>
+    </div>
     <!--form handling-->
-    <form action="/" method="post" class="d-flex2 table-data">
+    <form action="/" method="post" class="d-flex table-data table-responsive">
       <table class="table table-striped">
         <thead>
           <tr>

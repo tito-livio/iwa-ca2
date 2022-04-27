@@ -6,9 +6,18 @@
         <main id="site-main">
             <div class="container">
                 <div class="box-nav d-flex justify-between">
-                    <div class="filter">
-                        <a href="/edit-car"><i class="fa fa-angle-double-left"></i>All Cars</a>
-                    </div>
+                    <div class="filter p-3">
+                        <a
+                          href="/edit-car"
+                          style="
+                            border-radius: 30px;
+                            background-color: #3aafa9;
+                            text-decoration: none;
+                          "
+                          class="p-2 text-light"
+                          ><i class="fa fa-angle-double-left"></i>All Cars</a
+                        >
+                      </div>
                 </div>
                 <div class="form-title text-center">
                     <h2 class="text-dark">Update Car</h2>
@@ -16,46 +25,7 @@
               >
 
 <!--form handling-->
-<form method="POST" action="api/update/:id" id="update_car">
-    <div class="new_car">
-        <div class="form-group">
-            <input type="text" readonly name="id" value="<%=car._id%>" />
-        </div>
-        <div class="form-group">
-            <input type="hidden" name="id" value="<%=car._id%>" />
-            <label for="name" class="text-light">Name</label>
-            <input type="text" value="<%=car.name%>" name="name" placeholder="Enter your name" />
-        </div>
-        <div class="form-group">
-            <label for="type" class="text-light">Type</label>
-            <input type="text" value="<%=car.type%>" name="type" placeholder="Car type" />
-        </div>
-
-        <div class="form-group">
-            <label for="fuel" class="text-light">Fuel</label>
-            <input type="text" value="<%=car.fuel%>" name="fuel" placeholder="Car fuel" />
-        </div>
-        <div class="form-group">
-            <label for="price" class="text-light">Price</label>
-            <input type="text" value="<%=car.price%>" name="email" placeholder="Car price" />
-        </div>
-
-        <div class="form-group">
-            <label for="ecoType" class="text-light">EcoFriendly</label>
-            <div class="radio">
-                <input type="radio" id="radio-1" name="ecoType" value="Yes"<%=car.ecoType=='Yes'?'checked':''%> />
-                <label for="radio-1" class="radio-label">Yes</label>
-            </div>
-            <div class="radio">
-                <input type="radio" id="radio-2" name="ecoType" value="No"<%=car.ecoType=='No'?'checked':''%> />
-                <label for="radio-2" class="radio-label">No</label>
-            </div>
-        </div>
-        <div class="form-group">
-            <button type="submit" class="btn text-dark update">Save</button>
-        </div>
-    </div>
-</form>
+<%-include('include/_updateForm')%>
 <!--/form handling-->
         </div>
     </main>
