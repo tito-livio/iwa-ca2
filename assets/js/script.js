@@ -31,7 +31,7 @@ if (window.location.pathname == "/edit-car") {
   $ondelete.click(function () {
     var id = $(this).attr("data-id");
     var request = {
-      url: `http://localhost:4000/api/delete/${id}`,
+      url: `/api/delete/${id}`,
       method: "DELETE",
     };
     if (confirm("Are you sure you want to delete this record?")) {

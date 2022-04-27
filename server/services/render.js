@@ -12,7 +12,7 @@ import Cardb from "../model/model.js";
 export const index_app = (req, res) => {
   //making a get request to /api/car
   axios
-    .get("http://localhost:4000/api/car")
+    .get("/api/car")
     .then((response) => {
       //rendering the index.ejs file with the data from the api with car data as an object
       res.render("index", { car: response.data });
@@ -26,7 +26,7 @@ export const index_app = (req, res) => {
 export const edit_car_app = (req, res) => {
   //making a get request to /api/car
   axios
-    .get("http://localhost:4000/api/car")
+    .get("/api/car")
     .then((response) => {
       //rendering the edit_car.ejs file with the data from the api with car data as an object
       res.render("edit_car", { car: response.data });
