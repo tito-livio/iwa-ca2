@@ -1,11 +1,12 @@
-<% car.forEach((car)=>{%>
-<tr class="carTableRow">
+<% car.forEach((car,i)=>{%>
+<tr id="carTableRow<%=i%>" class="carTableRow">
   <td>
     <input
       class="form-check-input"
       type="checkbox"
-      id="inlineCheckbox1"
+      id="inlineCheckbox<%=i%>"
       value="<%=car._id%>"
+      onchange="selectRow(event,'<%=i%>')"
     />
   </td>
   <td><%= car.name%></td>

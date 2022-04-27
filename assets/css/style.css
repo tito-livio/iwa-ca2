@@ -72,17 +72,17 @@ th,
 }
 
 .selected {
-    background-color: #3aafa9;
+    background-color: #3aafa9 !important;
     color: #f7f7f7;
 }
 
-.hovered {
-    background-color: #1c8d87a2;
+tr:hover {
+    background-color: #1c8d87a2 !important;
     color: #f7f7f7;
 }
 
 .eco-highligt {
-    background-color: #0c8835a2;
+    background-color: #0c8835a2 !important;
     color: #f7f7f7;
 }
 
@@ -106,8 +106,4 @@ th,
     display: flex;
     justify-content: center;
     align-items: stretch;
-}
-.carTableRow:hover{
-background-color: #3aafa9 !important;
-color: #f7f7f7 !important;
 }
