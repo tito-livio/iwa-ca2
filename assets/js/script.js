@@ -119,3 +119,10 @@ function calculateBill() {
   $("#vat").text(formatter.format(totalVat));
   $("#amount-payable").text(formatter.format(totalBill + totalVat));
 }
+
+$(document).ready(function () {
+  $("li.active").removeClass("active");
+  $('a[href="' + location.pathname + '"]')
+    .closest("li")
+    .addClass("active");
+});
