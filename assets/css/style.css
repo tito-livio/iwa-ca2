@@ -99,7 +99,9 @@ tr:hover {
 }
 
 .d-flex table {
-    margin: 1em 10em;
+    margin: 1em 1em;
+    border: none;
+    width: 100%;
 }
 
 .flex-container {

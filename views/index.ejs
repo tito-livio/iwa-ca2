@@ -1,75 +1,98 @@
 <!--HTML header-->
-<%-include('include/_header')  %>
-    <!--END HTML header-->
+<%-include('include/_header') %>
+<!--END HTML header-->
 
-    <!-- Main Body Element-->
+<!-- Main Body Element-->
 
-    <body>
-        <!-- Navbar-->
-        <%-include('include/_navbar') %>
-            <!-- END Navbar-->
+<body>
+  <!-- Navbar-->
+  <%-include('include/_navbar') %>
+  <!-- END Navbar-->
 
-            <!--Heading Text-->
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12 text-center text-capitalize">
-                        <h1 class="mt-4">Order System</h1>
-                        <p class="lead">Use the following system to Order our cars</p>
-                    </div>
-                </div>
-                <!--END Heading Text-->
+  <!--Heading Text-->
+  <div class="container">
+    <div class="col-md-12 text-center text-capitalize">
+        <h1 class="mt-4">Order System</h1>
+        <p class="lead">Use the following system to Order our cars</p>
+      </div>
+    
+    <div class="row">
+      <!--END Heading Text-->
 
-                <!--Form and Table Element Container Row-->
-                <div class="flex-container">
-                    <!--Form order Element -->
-                    <div class="col-md-4">
-                        <form class="mt-3">
-                            <p class="h5">Highlight ECO Cars</p>
-                            <div class="mb-4">
-                                <input title="highlightECO" type="checkbox" name="highlightECO" id="highlightECO" onchange="highlightEco(event)"/>
-                                <span class="text-success">Eco Friendly</span>
-                            </div>
-                            <p class="text">
-                                You have selected
-                                <strong> <span id="selectedCars">0</span></strong> cars
-                            </p>
-                            <p class="h5">Total Amount</p>
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">&#8227;</span>
-                                </div>
-                                <input type="text" class="form-control" aria-label="Total" name="txtBillAmt" id="totalAmount" disabled style="background-color: #d3d3d3b7;"/>
-                                <input class="btn btn-block btn-secondary mt-2" type="button" name="btnCalcBill" value="Calculate Bill" id="calcBill" data-toggle="modal" data-target="#exampleModal" onclick="calculateBill()"/>
-                                <%-include('include/_modal') %>
-                            </div>
-                        </form>
-                    </div>
-                    <!--END Form order Element -->
-                    <!--Table Element generate from includes/_show.ejs-->
-                    <div class="col-md-12">
-                        <div class="d-flex table-data">
-                            <table id="indexTable" class="table table-striped">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Order</th>
-                                        <th scope="col">Car Name</th>
-                                        <th scope="col">Car Type</th>
-                                        <th scope="col">Fuel type</th>
-                                        <th scope="col">Price</th>
-                                        <th scope="col">EcoFriendly</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="tbody">
-                                    <%-include('include/_indexTable')%>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <!--END of Form and Table Element Container Row-->
-
-                </div>
+      <!--Form and Table Element Container Row-->
+      <div class="col-md-4 flex-container">
+        <!--Form order Element -->
+        
+          <form class="mt-3">
+            <p class="h5">Highlight ECO Cars</p>
+            <div class="mb-4">
+              <input
+                title="highlightECO"
+                type="checkbox"
+                name="highlightECO"
+                id="highlightECO"
+                onchange="highlightEco(event)"
+              />
+              <span class="text-success">Eco Friendly</span>
             </div>
+            <p class="text">
+              You have selected
+              <strong> <span id="selectedCars">0</span></strong> cars
+            </p>
+            <p class="h5">Total Amount</p>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">&#8227;</span>
+              </div>
+              <input
+                type="text"
+                class="form-control"
+                aria-label="Total"
+                name="txtBillAmt"
+                id="totalAmount"
+                disabled
+                style="background-color: #d3d3d3b7"
+              />
+              <input
+                class="btn btn-block btn-secondary mt-2"
+                type="button"
+                name="btnCalcBill"
+                value="Calculate Bill"
+                id="calcBill"
+                data-toggle="modal"
+                data-target="#exampleModal"
+                onclick="calculateBill()"
+              />
+              <%-include('include/_modal') %>
             </div>
-            <!--Footer Element-->
-            <%-include('include/_footer')%>
-                <!--END Footer Element-->
+          </form>
+      </div>
+        <!--END Form order Element -->
+        <!--Table Element generate from includes/_show.ejs-->
+        <div class="col-md-8">
+            <div class="d-flex table-data" >
+              <table id="indexTable" class="table table-responsive table-striped ">
+                <thead>
+                  <tr>
+                    <th scope="col">Order</th>
+                    <th scope="col">Car Name</th>
+                    <th scope="col">Car Type</th>
+                    <th scope="col">Fuel type</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">EcoFriendly</th>
+                  </tr>
+                </thead>
+                <tbody id="tbody">
+                  <%-include('include/_indexTable')%>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <!--END of Form and Table Element Container Row-->
+        </div>
+    </div>
+  </div>
+  <!--Footer Element-->
+  <%-include('include/_footer')%>
+  <!--END Footer Element-->
+</body>
