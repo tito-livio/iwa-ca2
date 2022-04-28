@@ -20,7 +20,7 @@ const PORT = process.env.PORT;
 export const index_app = (req, res) => {
     //making a get request to /api/car
     axios
-        .get(`${SERVER}/api/car`)
+        .get(`${SERVER}:${PORT}/api/car`)
         .then((response) => {
             //rendering the index.ejs file with the data from the api with car data as an object
             res.render("index", { car: response.data });
@@ -34,7 +34,7 @@ export const index_app = (req, res) => {
 export const edit_car_app = (req, res) => {
     //making a get request to /api/car
     axios
-        .get(`${SERVER}/api/car`)
+        .get(`${SERVER}:${PORT}/api/car`)
         .then((response) => {
             //rendering the edit_car.ejs file with the data from the api with car data as an object
             res.render("edit_car", { car: response.data });
@@ -84,7 +84,7 @@ export const createCar_app = (req, res) => {
 export const update_car_app = (req, res) => {
     //Requesting the data from the database by the id
     axios
-        .get(`${SERVER}/api/car`, { params: { id: req.query.id } })
+        .get(`${SERVER}:${PORT}/api/car`, { params: { id: req.query.id } })
         .then((cardata) => {
             //rendering the update_car.ejs file with the data from the api with car data as an object
             res.render("update_car", { car: cardata.data });
