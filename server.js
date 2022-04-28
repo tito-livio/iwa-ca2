@@ -44,6 +44,6 @@ const PORT = process.env.PORT || 4040;
 const SERVER = process.env.SERVER || "localhost:";
 
 app.listen(PORT, () => {
-  console.log(`Server is running on ${SERVER}${PORT}`);
+    console.log(`Server is running on ${SERVER}:${PORT}`);
 });
 console.timeEnd("Execution time:");

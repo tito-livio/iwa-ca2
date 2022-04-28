@@ -7,83 +7,91 @@
 import axios from "axios";
 //importing database connection
 import Cardb from "../model/model.js";
+//importing the dotenv module
+import dotenv from "dotenv";
+//set a global variable filename to env engine
+dotenv.config({ path: "config.env" });
+
+// setting a global variable to connect to MongoDB
+const SERVER = process.env.SERVER;
+const PORT = process.env.PORT;
 
 //Render the main homepage of the application
 export const index_app = (req, res) => {
-  //making a get request to /api/car
-  axios
-    .get("/api/car")
-    .then((response) => {
-      //rendering the index.ejs file with the data from the api with car data as an object
-      res.render("index", { car: response.data });
-    })
-    .catch((error) => {
-      res.send(error);
-    });
+    //making a get request to /api/car
+    axios
+        .get(`${SERVER}:${PORT}/api/car`)
+        .then((response) => {
+            //rendering the index.ejs file with the data from the api with car data as an object
+            res.render("index", { car: response.data });
+        })
+        .catch((error) => {
+            res.send(error);
+        });
 };
 
 //Render the Edit car webpage with the data of the car
 export const edit_car_app = (req, res) => {
-  //making a get request to /api/car
-  axios
-    .get("/api/car")
-    .then((response) => {
-      //rendering the edit_car.ejs file with the data from the api with car data as an object
-      res.render("edit_car", { car: response.data });
-    })
-    .catch((error) => {
-      res.send(error);
-    });
+    //making a get request to /api/car
+    axios
+        .get(`${SERVER}:${PORT}/api/car`)
+        .then((response) => {
+            //rendering the edit_car.ejs file with the data from the api with car data as an object
+            res.render("edit_car", { car: response.data });
+        })
+        .catch((error) => {
+            res.send(error);
+        });
 };
 
 //Render the Add car webpage
 export const add_car_app = (req, res) => {
-  //rendering the add_car.ejs file
-  res.render("add_car");
+    //rendering the add_car.ejs file
+    res.render("add_car");
 };
 
 //Render the Create car webpage
 export const createCar_app = (req, res) => {
-  //Validate request
-  if (!req.body) {
-    res.status(400).send({
-      message: "Content can not be empty!",
+    //Validate request
+    if (!req.body) {
+        res.status(400).send({
+            message: "Content can not be empty!",
+        });
+        return;
+    }
+    //Getting the data from the body request into a variable
+    const car = new Cardb({
+        name: req.body.name,
+        type: req.body.type,
+        fuel: req.body.fuel,
+        price: req.body.price,
+        ecoType: req.body.ecoType,
     });
-    return;
-  }
-  //Getting the data from the body request into a variable
-  const car = new Cardb({
-    name: req.body.name,
-    type: req.body.type,
-    fuel: req.body.fuel,
-    price: req.body.price,
-    ecoType: req.body.ecoType,
-  });
-  //save car into database
-  car
-    .save(car)
-    .then((data) => {
-      res.redirect("/add-car");
-    })
-    .catch((err) => {
-      res.status(500).send({
-        message: err.message || "Some error occurred while creating the car.",
-      });
-    });
+    //save car into database
+    car
+        .save(car)
+        .then((data) => {
+            res.redirect("/add-car");
+        })
+        .catch((err) => {
+            res.status(500).send({
+                message: err.message || "Some error occurred while creating the car.",
+            });
+        });
 };
 
 //Render the Update car webpage
 export const update_car_app = (req, res) => {
-  //Requesting the data from the database by the id
-  axios
-    .get("http://localhost:4000/api/car/", { params: { id: req.query.id } })
-    .then((cardata) => {
-      //rendering the update_car.ejs file with the data from the api with car data as an object
-      res.render("update_car", { car: cardata.data });
-    })
-    .catch((error) => {
-      res.send(error);
-    });
+    //Requesting the data from the database by the id
+    axios
+        .get(`${SERVER}:${PORT}/api/car`, { params: { id: req.query.id } })
+        .then((cardata) => {
+            //rendering the update_car.ejs file with the data from the api with car data as an object
+            res.render("update_car", { car: cardata.data });
+        })
+        .catch((error) => {
+            res.send(error);
+        });
 };
 
 //Render the delete car webpage
