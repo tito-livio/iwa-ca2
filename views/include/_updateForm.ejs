@@ -1,94 +1,55 @@
 <form method="POST" action="api/update/:id" id="update_car">
-  <div class="new_car">
-    <div class="row">
-      <div class="col-md-6 form-group">
-        <label for="id" class="text-dark align-center">ID</label>
-        <input
-          type="text"
-          readonly
-          name="id"
-          value="<%=car._id%>"
-          class="form-control"
-        />
-      </div>
-      <div class="col-md-6 form-group">
-        <input type="hidden" name="id" value="<%=car._id%>" />
-        <label for="name" class="text-dark align-center">Name</label>
-        <input
-          type="text"
-          value="<%=car.name%>"
-          name="name"
-          placeholder="Enter your name"
-          class="form-control"
-        />
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-4 form-group">
-        <label for="type" class="text-dark">Type</label>
-        <input
-          type="text"
-          value="<%=car.type%>"
-          name="type"
-          placeholder="Car type"
-          class="form-control m-0"
-          autocomplete="off"
-        />
-      </div>
-      <div class="col-md-4 form-group">
-        <label for="fuel" class="text-dark">Fuel</label>
-        <input
-          type="text"
-          value="<%=car.fuel%>"
-          name="fuel"
-          placeholder="Car fuel"
-          class="form-control m-0"
-          autocomplete="off"
-        />
-      </div>
-      <div class="col-md-4 form-group">
-        <label for="price" class="text-dark">Price</label>
-        <input
-          type="text"
-          value="<%=car.price%>"
-          name="email"
-          placeholder="Car price"
-          class="form-control m-0"
-          autocomplete="off"
-        />
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12 form-group">
-        <div class="d-flex justify-content-center align-center">
-          <div class="mt-2 mr-3">
-            <label for="ecoType" class="text-dark"
-              ><strong>Eco Friendly: </strong></label
+    <div class="new_car">
+        <div class="row">
+            <div class="col-md-6 form-group">
+                <label for="id" class="text-dark align-center">ID</label>
+                <input type="text" readonly name="id" value="<%=car._id%>" class="form-control" />
+            </div>
+            <div class="col-md-6 form-group">
+                <input type="hidden" name="id" value="<%=car._id%>" />
+                <label for="name" class="text-dark align-center">Name</label>
+                <input type="text" value="<%=car.name%>" name="name" placeholder="Enter your name" class="form-control" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 form-group">
+                <label for="type" class="text-dark">Type</label>
+                <input type="text" value="<%=car.type%>" name="type" placeholder="Car type" class="form-control m-0" autocomplete="off" />
+            </div>
+            <div class="col-md-4 form-group">
+                <label for="fuel" class="text-dark">Fuel</label>
+                <input type="text" value="<%=car.fuel%>" name="fuel" placeholder="Car fuel" class="form-control m-0" autocomplete="off" />
+            </div>
+            <div class="col-md-4 form-group">
+                <label for="price" class="text-dark">Price</label>
+                <input type="text" value="<%=car.price%>" name="price" placeholder="Car price" class="form-control m-0" autocomplete="off" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 form-group">
+                <div class="d-flex justify-content-center align-center">
+                    <div class="mt-2 mr-3">
+                        <label for="ecoType" class="text-dark"><strong>Eco Friendly: </strong></label
             >
           </div>
           <div class="radio mr-4">
             <input type="radio" id="radio-1" name="ecoType" value="Yes"
             <%=car.ecoType=='Yes'?'checked':''%> />
             <label for="radio-1" class="radio-label">Yes</label>
-          </div>
-          <div class="radio">
-            <input type="radio" id="radio-2" name="ecoType"
-            value="No"<%=car.ecoType=='No'?'checked':''%> />
-            <label for="radio-2" class="radio-label">No</label>
-          </div>
+                    </div>
+                    <div class="radio">
+                        <input type="radio" id="radio-2" name="ecoType" value="No" <%=car.ecoType=='No' ? 'checked': ''%> />
+                        <label for="radio-2" class="radio-label">No</label>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-    <div>
-      <div class="form-group">
-        <button
-          type="submit"
-          style="width: 150px; background-color: #3aafa9; border: none"
-          class="btn btn-primary text-light update"
-        >
+        <div>
+            <div class="form-group">
+                <button type="submit" style="width: 150px; background-color: #3aafa9; border: none" class="btn btn-primary text-light update">
           Save
         </button>
-      </div>
+            </div>
+        </div>
     </div>
-  </div>
 </form>
