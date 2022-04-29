@@ -14,7 +14,7 @@ import { SERVER, PORT } from "../../server.js";
 export const index_app = (req, res) => {
     //making a get request to /api/car
     axios
-        .get(`${SERVER}${PORT}/api/car`)
+        .get(`${SERVER}/api/car`)
         .then((response) => {
             //rendering the index.ejs file with the data from the api with car data as an object
             res.render("index", { car: response.data });
@@ -28,7 +28,7 @@ export const index_app = (req, res) => {
 export const edit_car_app = (req, res) => {
     //making a get request to /api/car
     axios
-        .get(`${SERVER}${PORT}/api/car`)
+        .get(`${SERVER}/api/car`)
         .then((response) => {
             //rendering the edit_car.ejs file with the data from the api with car data as an object
             res.render("edit_car", { car: response.data });
@@ -79,7 +79,7 @@ export const update_car_app = (req, res) => {
     //Requesting the data from the database by the id
     let id = req.query.id;
     axios
-        .get(`${SERVER}${PORT}/api/car/${id}`)
+        .get(`${SERVER}/api/car/${id}`)
         .then((response) => {
             //rendering the update_car.ejs file with the data from the api with car data as an object
             res.render("update_car", { car: response.data });
