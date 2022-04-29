@@ -7,20 +7,14 @@
 import axios from "axios";
 //importing database connection
 import Cardb from "../model/model.js";
-//importing the dotenv module
-import dotenv from "dotenv";
-//set a global variable filename to env engine
-dotenv.config({ path: "config.env" });
-
-// setting a global variable to connect to MongoDB
-const SERVER = process.env.SERVER;
-const PORT = process.env.PORT;
+//importing SERVER and PORT
+import { SERVER, PORT } from "../../server.js";
 
 //Render the main homepage of the application
 export const index_app = (req, res) => {
     //making a get request to /api/car
     axios
-        .get(`${SERVER}:${PORT}/api/car`)
+        .get(`${SERVER}${PORT}/api/car`)
         .then((response) => {
             //rendering the index.ejs file with the data from the api with car data as an object
             res.render("index", { car: response.data });
@@ -34,7 +28,7 @@ export const index_app = (req, res) => {
 export const edit_car_app = (req, res) => {
     //making a get request to /api/car
     axios
-        .get(`${SERVER}:${PORT}/api/car`)
+        .get(`${SERVER}${PORT}/api/car`)
         .then((response) => {
             //rendering the edit_car.ejs file with the data from the api with car data as an object
             res.render("edit_car", { car: response.data });
@@ -83,11 +77,12 @@ export const createCar_app = (req, res) => {
 //Render the Update car webpage
 export const update_car_app = (req, res) => {
     //Requesting the data from the database by the id
+    let id = req.query.id;
     axios
-        .get(`${SERVER}:${PORT}/api/car`, { params: { id: req.query.id } })
-        .then((cardata) => {
+        .get(`${SERVER}${PORT}/api/car/${id}`)
+        .then((response) => {
             //rendering the update_car.ejs file with the data from the api with car data as an object
-            res.render("update_car", { car: cardata.data });
+            res.render("update_car", { car: response.data });
         })
         .catch((error) => {
             res.send(error);
