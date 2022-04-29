@@ -42,7 +42,10 @@ route.get('/delete-car', delete_car_app);
 route.post('/api/car', createCar_API);
 
 //Find a car from ../controller/controller.js
-route.get('/api/car', findCar_API);
+route.get('/api/car/', findCar_API);
+
+//Find a car by Id from ../controller/controller.js
+route.get('/api/car/:id', findCar_API);
 
 //Update a car from ../controller/controller.js
 route.patch('/api/update/:id', updateCar_API);
