@@ -14,7 +14,7 @@ import { SERVER, PORT } from "../../server.js";
 export const index_app = (req, res) => {
     //making a get request to /api/car
     axios
-        .get(`${SERVER}:${PORT}/api/car`)
+        .get(`${SERVER}/api/car`)
         .then((response) => {
             //rendering the index.ejs file with the data from the api with car data as an object
             res.render("index", { car: response.data });
