@@ -39,9 +39,9 @@ app.use("/js", express.static(path.resolve("assets/js")));
 //Calling instance of MongoDB Connection by Mongoose
 connectDB();
 
-//call port from /config.env or call port 80 if it is not reachable
+//call port from /config.env or call port 4000 if it is not reachable
 export const PORT = process.env.PORT || 80;
-export const SERVER = process.env.SERVER || "http://localhost:";
+export const SERVER = process.env.SERVER || "http://127.0.0.1:";
 
 app.listen(PORT, () => {
     console.log(`Server is running on ${SERVER}${PORT}`);
