@@ -40,9 +40,8 @@ app.use("/js", express.static(path.resolve("assets/js")));
 connectDB();
 
 //call port from /config.env or call port 4000 if it is not reachable
-export const PORT = process.env.PORT || 4000;
-export const SERVERNAME = process.env.SERVER || "http://localhost:";
-export const SERVER = `${SERVERNAME}${PORT}`;
+export var PORT = process.env.PORT || 4000;
+export var SERVER = process.env.SERVER || `http://localhost:${PORT}`;
 
 app.listen(PORT, () => {
     console.log(`Server is running on ${SERVER}`);
