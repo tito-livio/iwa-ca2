@@ -6,8 +6,10 @@
         "express": "^4.17.3",
         "mongoose": "^6.2.10",
         "morgan": "^1.10.0",
-        "nodemon": "^2.0.15",
-        "path": "^0.12.7"
+        "nodemon": "^2.0.16",
+        "path": "^0.12.7",
+        "to": "^0.2.9",
+        "update": "^0.7.4"
     },
     "scripts": {
         "start": "node server.js"
