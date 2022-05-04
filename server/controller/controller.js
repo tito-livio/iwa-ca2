@@ -82,10 +82,17 @@ export const findCar_API = (req, res) => {
 
 export const updateCar_API = (req, res) => {
   //Validate request
+  const errors = validationResult(req);
   if (!req.body) {
     return res.status(400).send({
       message: "Content can not be empty!",
     });
+  }
+  if (!errors.isEmpty()) {
+    res.status(400).send({
+      errors: errors,
+    });
+    return;
   }
   const id = req.params.id;
   // Find car and update it with the request body
