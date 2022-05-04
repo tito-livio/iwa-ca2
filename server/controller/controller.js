@@ -11,9 +11,16 @@ import { validationResult } from "express-validator";
 export const createCar_API = (req, res) => {
   console.log(req.body);
   //Validate request
+  const errors = validationResult(req);
   if (!req.body) {
     res.status(400).send({
       message: "Content can not be empty!",
+    });
+    return;
+  }
+  if (!errors.isEmpty()) {
+    res.status(400).send({
+      errors: errors,
     });
     return;
   }
@@ -34,7 +41,6 @@ export const createCar_API = (req, res) => {
     .catch((err) => {
       res.status(500).send({
         message: err.message || "Some error occurred while creating the car.",
-        error: validationResult(req).array(),
       });
     });
 };

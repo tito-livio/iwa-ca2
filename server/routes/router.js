@@ -5,7 +5,7 @@
 
 //import express and express-validator, bodyParser
 import express from "express";
-import { body } from "express-validator";
+import { body, check } from "express-validator";
 import bodyparser from "body-parser";
 //importing some functions from the ../controller/controller.js file
 import {
@@ -56,6 +56,26 @@ route.get("/delete-car", delete_car_app);
 //Create a car from ../controller/controller.js
 route.post(
   "/api/car",
+  [
+    check("name", "name must be greater than 5 characters")
+      .exists()
+      .isAlphanumeric()
+      .isLength({
+        min: 5,
+      }),
+    check("type", "type must be greater than 5 characters")
+      .exists()
+      .isAlphanumeric()
+      .isLength({
+        min: 5,
+      }),
+    check("fuel", "fuel must be greater than 5 characters")
+      .exists()
+      .isAlphanumeric()
+      .isLength({
+        min: 5,
+      }),
+  ],
   body("name").not().isEmpty().isString().trim().escape(),
   body("type").not().isEmpty().isString().trim().escape(),
   body("fuel").not().isEmpty().trim().escape().escape(),
@@ -72,6 +92,26 @@ route.get("/api/car/:id", findCar_API);
 //Update a car from ../controller/controller.js
 route.patch(
   "/api/update/:id",
+  [
+    check("name", "name must be greater than 5 characters")
+      .exists()
+      .isAlphanumeric()
+      .isLength({
+        min: 5,
+      }),
+    check("type", "type must be greater than 5 characters")
+      .exists()
+      .isAlphanumeric()
+      .isLength({
+        min: 5,
+      }),
+    check("fuel", "fuel must be greater than 5 characters")
+      .exists()
+      .isAlphanumeric()
+      .isLength({
+        min: 5,
+      }),
+  ],
   body("name").not().isEmpty().isString().trim().escape(),
   body("type").not().isEmpty().isString().trim().escape(),
   body("fuel").not().isEmpty().trim().escape().escape(),
