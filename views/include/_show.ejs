@@ -1,30 +1,22 @@
 <% for (var i = 0; i < car.length; i++){%>
-    <tr>
-        <td>
-            <%=i+1%>
-        </td>
-        <td>
-            <%= car[i].name%>
-        </td>
-        <td>
-            <%= car[i].type%>
-        </td>
-        <td>
-            <%= car[i].fuel%>
-        </td>
-        <td>
-            <%= car[i].price%>
-        </td>
-        <td>
-            <%= car[i].ecoType%>
-        </td>
-        <td>
-            <a href="/update-car?id=<%= car[i]._id%>" class="btn border-shadow update">
-                <span class="text-gradient"><i class="fa fa-pencil-alt"></i></span></a>
+<tr>
+  <td><%=i+1%></td>
+  <td><%= car[i].name%></td>
+  <td><%= car[i].type%></td>
+  <td><%= car[i].fuel%></td>
+  <td>
+    <%= Intl.NumberFormat('en-US', { style: 'currency', currency: 'EUR',
+    }).format(car[i].price); %>
+  </td>
+  <td><%= car[i].ecoType%></td>
+  <td>
+    <a href="/update-car?id=<%= car[i]._id%>" class="btn border-shadow update">
+      <span class="text-gradient"><i class="fa fa-pencil-alt"></i></span
+    ></a>
 
-            <a class="btn border-shadow delete" data-id="<%= car[i]._id%>">
-                <span class="text-gradient"><i class="fa fa-times"></i></span>
-            </a>
-        </td>
-    </tr>
-    <% } %>
+    <a class="btn border-shadow delete" data-id="<%= car[i]._id%>">
+      <span class="text-gradient"><i class="fa fa-times"></i></span>
+    </a>
+  </td>
+</tr>
+<% } %>

@@ -43,11 +43,10 @@ connectDB();
 
 //call port from /config.env or call port 4000 if it is not reachable
 export const PORT = process.env.PORT || 4000;
-console.log(PORT);
+
 //Calling the server from /config.env or call localhost combined with port
 //this line makes the app compatible to run on localhost and port 4000 and Heroku at the same time
 export const SERVER = process.env.SERVER || `http://localhost:${PORT}`;
-console.log(SERVER);
 
 //put the app available at port 4000
 app.listen(PORT, () => {

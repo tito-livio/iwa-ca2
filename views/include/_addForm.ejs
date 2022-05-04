@@ -1,22 +1,66 @@
 <div class="d-flex justify-content-center">
-    <form id="formCar" class="w-50" action="/add-car" method="POST">
-        <input id="id" name="id" value="" type="text" class="form-control" autocomplete="off" readonly placeholder="ID" />
+  <form id="formCar" class="w-50" action="/add-car" method="POST">
+    <input
+      id="id"
+      name="id"
+      value=""
+      type="text"
+      class="form-control"
+      autocomplete="off"
+      readonly
+      placeholder="ID"
+      required
+    />
 
-        <input id="name" name="name" type="text" value="" class="form-control" autocomplete="off" placeholder="Car name" />
+    <input
+      id="name"
+      name="name"
+      type="text"
+      value=""
+      class="form-control"
+      autocomplete="off"
+      placeholder="Car name"
+      required
+    />
 
-        <div class="row">
-            <div class="col">
-                <input id="type" name="type" type="text" class="form-control m-0" autocomplete="off" placeholder="Car type" />
-            </div>
-            <div class="col">
-                <input id="fuel" name="fuel" type="text" class="form-control m-0" autocomplete="off" placeholder="Fuel type" />
-            </div>
-            <div class="col">
-                <input id="price" name="price" type="number" class="form-control m-0" autocomplete="off" placeholder="Price" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="form-check-label mr-4"><strong> Eco Friendly:</strong></label
+    <div class="row">
+      <div class="col">
+        <input
+          id="type"
+          name="type"
+          type="text"
+          class="form-control m-0"
+          autocomplete="off"
+          placeholder="Car type"
+          required
+        />
+      </div>
+      <div class="col">
+        <input
+          id="fuel"
+          name="fuel"
+          type="text"
+          class="form-control m-0"
+          autocomplete="off"
+          placeholder="Fuel type"
+          required
+        />
+      </div>
+      <div class="col">
+        <input
+          id="price"
+          name="price"
+          type="number"
+          class="form-control m-0"
+          autocomplete="off"
+          placeholder="Price"
+          required
+        />
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-check-label mr-4"
+        ><strong> Eco Friendly:</strong></label
       >
       <input
         id="eco_type_Yes"
@@ -27,13 +71,20 @@
         checked
       />
       <label for="eco_type_Yes" class="form-check-label mr-4">Yes</label>
-            <input id="eco_type_No" name="ecoType" value="No" class="form-check form-check-inline" type="radio" id="radio-2" />
-            <label for="eco_type_No" class="form-check-label">No</label>
-        </div>
-        <div class="d-flex justify-content-center">
-            <button type="submit" class="btn btn-success" id="btn-create">
+      <input
+        id="eco_type_No"
+        name="ecoType"
+        value="No"
+        class="form-check form-check-inline"
+        type="radio"
+        id="radio-2"
+      />
+      <label for="eco_type_No" class="form-check-label">No</label>
+    </div>
+    <div class="d-flex justify-content-center">
+      <button type="submit" class="btn btn-success" id="btn-create">
         Create
       </button>
-        </div>
-    </form>
+    </div>
+  </form>
 </div>

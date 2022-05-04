@@ -3,28 +3,29 @@
  * @description: This file is responsible for distribution of the all the routes
  */
 
-//import express
+//import express and express-validator, bodyParser
 import express from "express";
+import { body } from "express-validator";
+import bodyparser from "body-parser";
 //importing some functions from the ../controller/controller.js file
 import {
-    createCar_API,
-    findCar_API,
-    updateCar_API,
-    deleteCar_API,
+  createCar_API,
+  findCar_API,
+  updateCar_API,
+  deleteCar_API,
 } from "../controller/controller.js";
 //importing some functions from the ../services/render.js file
 import {
-    index_app,
-    add_car_app,
-    createCar_app,
-    edit_car_app,
-    update_car_app,
-    delete_car_app,
+  index_app,
+  add_car_app,
+  createCar_app,
+  edit_car_app,
+  update_car_app,
+  delete_car_app,
 } from "../services/render.js";
 
 //creating a instance of express
 const route = express.Router();
-
 /**
  * @description Endpoints for the webpage itself and API
  * _app ending for the functions is for the webpage from render and _API is for the API from controller
@@ -53,7 +54,14 @@ route.get("/delete-car", delete_car_app);
  */
 
 //Create a car from ../controller/controller.js
-route.post("/api/car", createCar_API);
+route.post(
+  "/api/car",
+  body("name").not().isEmpty().isString().trim().escape(),
+  body("type").not().isEmpty().isString().trim().escape(),
+  body("fuel").not().isEmpty().trim().escape().escape(),
+  body("price").isNumeric(),
+  createCar_API
+);
 
 //Find a car from ../controller/controller.js
 route.get("/api/car/", findCar_API);
@@ -62,7 +70,14 @@ route.get("/api/car/", findCar_API);
 route.get("/api/car/:id", findCar_API);
 
 //Update a car from ../controller/controller.js
-route.patch("/api/update/:id", updateCar_API);
+route.patch(
+  "/api/update/:id",
+  body("name").not().isEmpty().isString().trim().escape(),
+  body("type").not().isEmpty().isString().trim().escape(),
+  body("fuel").not().isEmpty().trim().escape().escape(),
+  body("price").isNumeric(),
+  updateCar_API
+);
 
 //Delete a car from ../controller/controller.js
 route.delete("/api/delete/:id", deleteCar_API);
