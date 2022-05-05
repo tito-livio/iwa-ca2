@@ -45,7 +45,15 @@ route.get("/", index_app);
 //Add a car html page generate from ../services/render.js using a GET
 route.get("/add-car", add_car_app);
 //Request for adding a car into database using a POST
-route.post("/add-car", createCar_app);
+route.post(
+  "/add-car",
+  validate,
+  sanitize_name,
+  sanitize_fuel,
+  sanitize_price,
+  sanitize_type,
+  createCar_app
+);
 
 //Edit a car html page from ../services/render.js
 route.get("/edit-car", edit_car_app);

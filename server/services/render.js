@@ -9,6 +9,8 @@ import axios from "axios";
 import Cardb from "../model/model.js";
 //importing SERVER and PORT
 import { SERVER } from "../../server.js";
+//Importing express validation
+import { validationResult } from "express-validator";
 
 //Render the main homepage of the application
 export const index_app = (req, res) => {
@@ -46,9 +48,16 @@ export const add_car_app = (req, res) => {
 //Render the Create car webpage
 export const createCar_app = (req, res) => {
   //Validate request
+  const errors = validationResult(req);
   if (!req.body) {
     res.status(400).send({
       message: "Content can not be empty!",
+    });
+    return;
+  }
+  if (!errors.isEmpty()) {
+    res.status(400).send({
+      errors: errors,
     });
     return;
   }
