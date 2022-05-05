@@ -80,17 +80,6 @@ export const createCar_app = (req, res) => {
         message: err.message || "Some error occurred while creating the car.",
       });
     });
-  //save car into database
-  car
-    .save(car)
-    .then((data) => {
-      res.redirect("/add-car");
-    })
-    .catch((err) => {
-      res.status(500).send({
-        message: err.message || "Some error occurred while creating the car.",
-      });
-    });
 };
 
 //Render the Update car webpage
