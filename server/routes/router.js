@@ -88,14 +88,7 @@ route.get("/api/car/", findCar_API);
 route.get("/api/car/:id", findCar_API);
 
 //Update a car from ../controller/controller.js
-route.patch(
-  "/api/update/:id",
-  sanitize_name,
-  sanitize_fuel,
-  sanitize_price,
-  sanitize_type,
-  updateCar_API
-);
+route.patch("/api/update/:id", updateCar_API);
 
 //Delete a car from ../controller/controller.js
 route.delete("/api/delete/:id", deleteCar_API);
