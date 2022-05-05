@@ -1,6 +1,6 @@
 /**
  * @author: Tito Livio - 2018253
- * @description: This file is responsible for to render of all webpage of the system.
+ * @description: This file is responsible for to render of all webpages of the system.
  */
 
 //import axios module for making http requests
@@ -80,6 +80,17 @@ export const createCar_app = (req, res) => {
         message: err.message || "Some error occurred while creating the car.",
       });
     });
+  //save car into database
+  car
+    .save(car)
+    .then((data) => {
+      res.redirect("/add-car");
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: err.message || "Some error occurred while creating the car.",
+      });
+    });
 };
 
 //Render the Update car webpage
@@ -93,7 +104,7 @@ export const update_car_app = (req, res) => {
       res.render("update_car", { car: response.data });
     })
     .catch((error) => {
-      res.send(error);
+      res.send("Car was not found!!");
     });
 };
 
