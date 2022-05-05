@@ -8,29 +8,29 @@ import express from "express";
 
 //importing some functions from the ../controller/controller.js file
 import {
-    createCar_API,
-    findCar_API,
-    updateCar_API,
-    deleteCar_API,
+  createCar_API,
+  findCar_API,
+  updateCar_API,
+  deleteCar_API,
 } from "../controller/controller.js";
 //importing some functions from the ../services/render.js file
 import {
-    index_app,
-    add_car_app,
-    createCar_app,
-    edit_car_app,
-    update_car_app,
-    delete_car_app,
+  index_app,
+  add_car_app,
+  createCar_app,
+  edit_car_app,
+  update_car_app,
+  delete_car_app,
 } from "../services/render.js";
 
 //importing middlewares from the ../server/middlewares
 import { validate } from "../middlewares/validation.js";
 
 import {
-    sanitize_name,
-    sanitize_fuel,
-    sanitize_type,
-    sanitize_price,
+  sanitize_name,
+  sanitize_fuel,
+  sanitize_type,
+  sanitize_price,
 } from "../middlewares/sanitization.js";
 
 //creating a instance of express
@@ -72,13 +72,13 @@ route.get("/delete-car", delete_car_app);
 
 //Create a car from ../controller/controller.js
 route.post(
-    "/api/car",
-    validate,
-    sanitize_name,
-    sanitize_fuel,
-    sanitize_price,
-    sanitize_type,
-    createCar_API
+  "/api/car",
+  validate,
+  sanitize_name,
+  sanitize_fuel,
+  sanitize_price,
+  sanitize_type,
+  createCar_API
 );
 
 //Find a car from ../controller/controller.js
@@ -89,13 +89,12 @@ route.get("/api/car/:id", findCar_API);
 
 //Update a car from ../controller/controller.js
 route.patch(
-    "/api/update/:id",
-    validate,
-    sanitize_name,
-    sanitize_fuel,
-    sanitize_price,
-    sanitize_type,
-    updateCar_API
+  "/api/update/:id",
+  sanitize_name,
+  sanitize_fuel,
+  sanitize_price,
+  sanitize_type,
+  updateCar_API
 );
 
 //Delete a car from ../controller/controller.js
