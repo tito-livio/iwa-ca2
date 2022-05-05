@@ -56,8 +56,8 @@ export const createCar_app = (req, res) => {
     return;
   }
   if (!errors.isEmpty()) {
-    res.status(400).send({
-      errors: errors,
+    res.render("add_car", {
+      errors,
     });
     return;
   }
