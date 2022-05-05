@@ -9,7 +9,6 @@ import { validationResult } from "express-validator";
 
 //Create a new Car function
 export const createCar_API = (req, res) => {
-  console.log(req.body);
   //Validate request
   const errors = validationResult(req);
   if (!req.body) {
